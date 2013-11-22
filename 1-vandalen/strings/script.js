@@ -8,6 +8,7 @@ window.onload = function(){
         var character='';
         var str2= '';
         
+        // while-loop som loopar var och en av bokstäverna i textsträngen, och medifierar bokstäverna beroende på egenskaper.
         while (i <= str.length){
             character = str.charAt(i);
             
@@ -23,11 +24,12 @@ window.onload = function(){
             str2 += character;
         }
         
+        //Returnerar en sträng med bokstaven a och A utbytt mot #"
         return str2.replace(/a/gi, "#");
     };
 
 
-	};
+
 	// ------------------------------------------------------------------------------
 
 
