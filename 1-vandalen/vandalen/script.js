@@ -54,6 +54,12 @@ var makePerson = function(persArr) {
 	var nameArray = new Array();
 	var i = 0;
 	
+	while(i < persArr.length){
+	    ageArray[i] = persArr[i].age;
+	    nameArray[i] = persArr[i].name;
+	    i++;
+	}
+	
     
     
 	
