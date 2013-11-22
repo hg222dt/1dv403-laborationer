@@ -23,7 +23,7 @@ window.onload = function(){
             str2 += character;
         }
         
-        
+        return str2.replace(/a/gi, "#");
     };
 
 
