@@ -79,6 +79,7 @@ var makePerson = function(persArr) {
 	});
 	persons.names = nameArray.join(", ");
 
+    return persons;
     
 	
 };
