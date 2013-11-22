@@ -17,7 +17,7 @@ window.onload = function(){
             throw new Error("Fel format");
         }
         
-        var d = new Date(date);
+        var d = new Date(date+'T23:59:59');
         
         var t = new Date();
         
