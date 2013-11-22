@@ -1,17 +1,47 @@
 "use strict";
 
 window.onload = function(){
-
+    
+    var error = new Object();
+    error = {message: "fel"};
 	
 	var birthday = function(date){
-		
+        
+            
+        var parts = date.split("-");
+        
+        if(parts[0].length!=4 || parts[1].length!=2 || parts[2].length!=2){
+            throw new Error(error);
+        }
+        
+        if(isNaN(parts[0])||isNaN(parts[1])||isNaN(parts[2])){
+            throw new Error(error);
+        }
 
+        var minutes=1000*60;
+        var hours=minutes*60;
+        var days=hours*24;
+        var years=days*365;
+        var d=new Date();
+        var t=d.getTime();
+        var y=Math.round(t/days);
+        
+        var thisYear = d.getFullYear();
+        
+        var bdDateObj = new Date();
+        
+        if(parts[1]<d.getMonth()){
+            bdDateObj.setFullYear(thisYear+1, parts[1]-1, parts[2]);
+        }
+        else{
+            bdDateObj.setFullYear(thisYear, parts[1]-1, parts[2]);
+        }
+        
+        var bd = bdDateObj.getTime();
 
-			// Din kod här.
-
-
-
-
+        var x = Math.round(bd/days);
+        
+        return x - y;
 	};
 	// ------------------------------------------------------------------------------
 
