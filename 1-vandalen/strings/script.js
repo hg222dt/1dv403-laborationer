@@ -2,49 +2,16 @@
 
 window.onload = function(){
 
-	// I denna funktion ska du skriva koden för att hantera "spelet"
-	var convertString = function(str){
-		// Plats för förändring.		
-		// Returnera den konverterade strängen.
-		// Vid fel, kasta ett undantag med ett meddelande till användaren. 
-	
-       // var str = "Mr Blue has a blue house and a blue car";
-       /*
-      for (var i = 0; i < str.length; i++) {
-          if (str.charAt(i)== uppercase){
-              str.charAt(i).toLowerCase();
-          }
-          else {
-              str.charAt(i).toUpperCase();
-          }
-          
-      }
+    var convertString = function(str){
+        
+        var i=0;
+        var character='';
+        var str2= '';
         
         
-       */ 
         
-    var i=0;
-    var character='';
-    var str2= '';
-    
-    
-    while (i <= str.length){
-        character = str.charAt(i);
         
-    	if (character == character.toUpperCase()) {
-    		character = character.toLowerCase();
-    	}
-    	else if (character == character.toLowerCase()){
-    		character = character.toUpperCase();
-    	}
-        
-        i++;
-        
-        str2 += character;
-    }
-
-
-    return str2.replace(/a/gi, "#");
+    };
 
 
 	};
