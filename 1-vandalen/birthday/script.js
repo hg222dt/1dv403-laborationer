@@ -4,10 +4,11 @@ window.onload = function(){
 
 	
 	var birthday = function(date){
-        
-            
+	    
+	    //Array som innehåller de olika delarna i "date"
         var parts = date.split("-");
         
+        //Validering av datum--inmatningen
         if(parts[0].length!=4 || parts[1].length!=2 || parts[2].length!=2){
             throw new Error("Fel format");
         }
@@ -15,56 +16,7 @@ window.onload = function(){
         if(isNaN(parts[0])||isNaN(parts[1])||isNaN(parts[2])){
             throw new Error("Fel format");
         }
-        
-        var d = new Date(date);
-        
-        var t = new Date();
-        
-        var today = t.getTime();
-        
-        d.setFullYear(t.getFullYear());
-        
-        if(d.getTime()-t.getTime()<0)
-            d.setFullYear(t.getFullYear()+1);
-            
-        
-        var birthday = d.getTime();
-        
-        var timeLeft = birthday - today;
-        
-        var daysLeft = Math.floor(timeLeft / (1000*60*60*24));
-        
-        return daysLeft;
 
-
-        /*
-
-        var minutes=1000*60;
-        var hours=minutes*60;
-        var days=hours*24;
-        var years=days*365;
-        var d=new Date();
-        var t=d.getTime();
-        var y=Math.round(t/days);
-        
-        var thisYear = d.getFullYear();
-        
-        var bdDateObj = new Date();
-        
-        if(parts[1]<d.getMonth()){
-            bdDateObj.setFullYear(thisYear+1, parts[1]-1, parts[2]);
-        }
-        else{
-            bdDateObj.setFullYear(thisYear, parts[1]-1, parts[2]);
-        }
-        
-        var bd = bdDateObj.getTime();
-
-        var x = Math.round(bd/days);
-        
-        return x - y;
-        
-        */
 	};
 	// ------------------------------------------------------------------------------
 
