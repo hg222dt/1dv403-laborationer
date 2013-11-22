@@ -1,47 +1,20 @@
 "use strict";
 
 window.onload = function(){
-    
-    var max = 100;
-    var min = 0;
-    var count = 0;
-    
-    function randomize(){
+	
+	function randomize(){
         return Math.floor( Math.random() * (max-min)+1 )+min;
 	    //return Math.floor( Math.random() * 100)+1;
         //Math.floor( Math.random() * (100-1)+1) + 1;
 	}
 	
 	var secret = randomize();
-
+	
 	// I denna funktion ska du skriva koden för att hantera "spelet"
 	var guess = function(number){
-		//console.log("Det hemliga talet: " + secret); // Du når den yttre variabeln secret innifrån funktionen.
-		//console.log("Du gissade: " + number); // Detta nummer är det som användaren gissade på.
+		console.log("Det hemliga talet: " + secret); // Du når den yttre variabeln secret innifrån funktionen.
+		console.log("Du gissade: " + number); // Detta nummer är det som användaren gissade på.
 		// Plats för förändring.
-		//return [secret];
-		
-		count++;
-		
-		if( number == secret){
-		    return [true, "Grattis du vann! Det hemliga talet var " + secret + " och du behövde " + count + " gissningar för att hitta det."];
-		}
-		
-		else if(number < 0 || number > 100){
-		    return [false, "Talet är utanför intervallet " + min + " - " + max];
-		}
-		
-		else if( number < secret){
-		    return [false, "Det hemliga talet är högre!"];
-		}
-		
-		else if( number > secret){
-		    return [false, "Det hemliga talet är lägre!"];
-		}
-		
-		else{
-		    return [false, "Mata in ett tal."];
-		}
 		
 		// Returnera exempelvis: 
 		// [true, "Grattis du vann! Det hemliga talet var X och du behövde Y gissningar för att hitta det."]
