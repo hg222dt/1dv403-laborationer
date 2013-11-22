@@ -8,7 +8,20 @@ window.onload = function(){
         var character='';
         var str2= '';
         
-        
+        while (i <= str.length){
+            character = str.charAt(i);
+            
+        	if (character == character.toUpperCase()) {
+        		character = character.toLowerCase();
+        	}
+        	else if (character == character.toLowerCase()){
+        		character = character.toUpperCase();
+        	}
+            
+            i++;
+            
+            str2 += character;
+        }
         
         
     };
