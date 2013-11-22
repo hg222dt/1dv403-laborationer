@@ -16,6 +16,10 @@ window.onload = function(){
         if(isNaN(parts[0])||isNaN(parts[1])||isNaN(parts[2])){
             throw new Error("Fel format");
         }
+        
+        var d = new Date(date);
+        
+        var t = new Date();
 
 	};
 	// ------------------------------------------------------------------------------
