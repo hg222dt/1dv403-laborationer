@@ -72,6 +72,12 @@ var makePerson = function(persArr) {
 	}
 
 	persons.averageAge = Math.round(totalAge / ageArray.length);
+	
+	// Sortera namn
+	nameArray.sort(function (a, b) {
+		return a.localeCompare(b);
+	});
+	persons.names = nameArray.join(", ");
 
     
 	
