@@ -60,7 +60,19 @@ var makePerson = function(persArr) {
 	    i++;
 	}
 	
-    
+    persons.minAge = Math.min.apply(null, ageArray);
+	persons.maxAge = Math.max.apply(null, ageArray);
+	persons.averageAge = 0;
+	
+	i = 0;
+	var totalAge = 0;
+	while(i < ageArray.length){
+		totalAge += ageArray[i];
+	    i++;
+	}
+
+	persons.averageAge = Math.round(totalAge / ageArray.length);
+
     
 	
 };
