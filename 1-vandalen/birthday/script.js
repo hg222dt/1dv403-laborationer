@@ -20,6 +20,15 @@ window.onload = function(){
         var d = new Date(date);
         
         var t = new Date();
+        
+        var today = t.getTime();
+        
+        d.setFullYear(t.getFullYear());
+        
+        if(d.getTime()-t.getTime()<0)
+            d.setFullYear(t.getFullYear()+1);
+            
+        var birthday = d.getTime();
 
 	};
 	// ------------------------------------------------------------------------------
