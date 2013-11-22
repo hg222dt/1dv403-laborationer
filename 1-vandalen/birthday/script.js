@@ -25,11 +25,13 @@ window.onload = function(){
         
         d.setFullYear(t.getFullYear());
         
+        //Sats som ökar födelsedagens år med 1 om födelsedagen redan infallit detta år.
         if(d.getTime()-t.getTime()<0)
             d.setFullYear(t.getFullYear()+1);
             
         var birthday = d.getTime();
         
+        //symoboliserar differensen mellan födelsedagensdatum och dagens dagtum
         var timeLeft = birthday - today;
         
         var daysLeft = Math.floor(timeLeft / (1000*60*60*24));
