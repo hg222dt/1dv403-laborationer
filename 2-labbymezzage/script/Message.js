@@ -27,4 +27,6 @@ function Message(message, date){
         return this.getDate();
     }
     
+    return this;
+    
 }

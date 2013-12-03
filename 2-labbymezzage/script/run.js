@@ -1,9 +1,12 @@
 var run = {
 
     init: function () {
-        var test = new message();
+        var mess = new Message("Meddelande", new Date());
         
-        alert("hej");
+        alert(mess);
+        alert(mess.getText());
+        mess.setText("En annan text");
+        alert(mess);
     }  
 }
 
