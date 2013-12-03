@@ -17,6 +17,12 @@ var MessageBoard = {
         
         alert(MessageBoard["messages"][0]);
         
+        /*
+        var test = this.messages.push(mess);
+        alert(test[0]);
+        */
+        
+        alert(MessageBoard.messages[0].getText());
     }  
 }
 
