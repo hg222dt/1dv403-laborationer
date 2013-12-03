@@ -4,25 +4,20 @@ var MessageBoard = {
     
     init: function () {
         
-        var mess = new Message("Meddelande", new Date());
+        var createMessage = function () {
+            var textInput = document.getElementById("textInputArea").value;
+            var mess = new Message(textInput, new Date());
+            MessageBoard.messages.push(mess);
+            alert(MessageBoard.messages[0]);
+        };
+            
+        var button = document.getElementById("skickaknapp");
         
-        /*
-        alert(mess);
-        alert(mess.getText());
-        mess.setText("En annan text");
-        alert(mess);
-        */
+        button.addEventListener("click", createMessage, false);
         
-        MessageBoard["messages"].push(mess);
-        
-        alert(MessageBoard["messages"][0]);
-        
-        /*
-        var test = this.messages.push(mess);
-        alert(test[0]);
-        */
-        
-        alert(MessageBoard.messages[0].getText());
+
+       
+    
     }  
 }
 
