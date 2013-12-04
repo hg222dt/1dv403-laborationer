@@ -35,3 +35,19 @@ input {
     margin-right: auto;
     padding: 10px;
 }
+
+#messageBoard img {
+    width:30px;
+    position: relative;
+    display:inline;
+}
+
+#messageBoard a {
+    position:relative;
+    display: inline;
+    width:30px;
+}
+
+#messageBoard p {
+    width:80%;
+}
