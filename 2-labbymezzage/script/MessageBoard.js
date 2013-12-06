@@ -80,13 +80,13 @@ var MessageBoard = {
         atag2.appendChild(imgTime);
         
         
-        var eraseButton = document.getElementsByClassName("TaBortKnapp");
+        //var eraseButton = document.getElementsByClassName("TaBortKnapp");
         
         //eraseButton.addEventListener("click", MessageBoard.removeMessage(this), false);
 
         //eraseButton.alt="Close";
         
-        eraseButton.onclick = function () {
+        atag1.onclick = function () {
             alert("Du kommer ta bort ett meddelande");
             MessageBoard.removeMessage(messageID);
         };
