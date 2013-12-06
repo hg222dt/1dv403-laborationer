@@ -20,11 +20,6 @@ var MessageBoard = {
         
         button.addEventListener("click", createMessage, false);
         
-        
-        var eraseButton = document.getElementsByClass("TaBortKnapp");
-        
-        eraseButton.addEventListener("click", MessageBoard.removeMessage(this), false);
-        
     },  
     
     renderMessages: function () {
@@ -35,6 +30,17 @@ var MessageBoard = {
         for(var i=0; i<MessageBoard.messages.length; i++){
             MessageBoard.renderMessage(i);
         }
+        
+        
+        var messageBoard = document.querySelector("#messageBoard");
+        var p = document.createElement("p");
+        var text = document.createTextNode("Antal meddelanden : " + MessageBoard.messages.length);
+        
+        
+        messageBoard.appendChild(p);
+        p.appendChild(text);
+        
+        
     },
     
     renderMessage: function (messageID) {
@@ -45,16 +51,16 @@ var MessageBoard = {
         var atag1 = document.createElement("a");
         var atag2 = document.createElement("a");
         
-        atag1.setAttribute("href", "#");
-        atag2.setAttribute("href", "#");
+        //atag1.setAttribute("href", "#");
+        //atag2.setAttribute("href", "#");
         
+        var div = document.createElement("div");
         var p = document.createElement("p");
         
         
         var imgClose = document.createElement("img");
         imgClose.setAttribute("src", "cross.png");
-        imgClose.setAttribute("class", "TaBortKnapp")
-        
+        atag1.setAttribute("class", "TaBortKnapp");
         
         var imgTime = document.createElement("img");
         imgTime.setAttribute("src", "clock.png");
@@ -65,19 +71,48 @@ var MessageBoard = {
         //var text = document.createTextNode(MessageBoard.messages[messageID].getText());
         //p.appendChild(text);
         
-        messageBoard.appendChild(p);
+        messageBoard.appendChild(div);
+        div.appendChild(p);
         
-        messageBoard.appendChild(atag1);
+        div.appendChild(atag1);
         atag1.appendChild(imgClose);
-        messageBoard.appendChild(atag2);
+        div.appendChild(atag2);
         atag2.appendChild(imgTime);
         
+        
+        var eraseButton = document.getElementsByClassName("TaBortKnapp");
+        
+        //eraseButton.addEventListener("click", MessageBoard.removeMessage(this), false);
+
+        //eraseButton.alt="Close";
+        
+        eraseButton.onclick = function () {
+            alert("Du kommer ta bort ett meddelande");
+            MessageBoard.removeMessage(messageID);
+        };
     },
     
-    removeMessage: function () {
+    removeMessage: function (messageID) {
+        MessageBoard.messages.splice(messageID,1);
         
+        MessageBoard.renderMessages();
+            
+        //event.preventDefault();
     }
     
 }
 
 window.onload = MessageBoard.init;
+
+
+
+
+
+
+
+
+
+
+
+
+
