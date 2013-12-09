@@ -50,8 +50,10 @@ var MessageBoard = {
         
         var messageBoard = document.querySelector("#messageBoard");
         var p = document.createElement("p");
+        
         var text = document.createTextNode("Antal meddelanden : " + MessageBoard.messages.length);
         
+        p.setAttribute("id", "messageAmount");
         
         messageBoard.appendChild(p);
         p.appendChild(text);
