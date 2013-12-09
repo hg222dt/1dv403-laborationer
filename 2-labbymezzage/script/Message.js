@@ -20,7 +20,10 @@ function Message(message, date){
     }
     
     Message.prototype.getHTMLText = function() {
-        return this.getText();
+        var text = this.getText();
+        
+        return text.replace(/[\n\r]/g, "<br />");
+
     }
     
     Message.prototype.getDateText = function() {
@@ -86,12 +89,21 @@ function Message(message, date){
                 break;
         }
         
-        str = "Meddelandet skrevs den " + day + " " + month + " " + year + " klockan " + date.getHours() + ":" + date.getMinutes();
+        var hours = date.getHours();
+        
+        var minutes = "";
+        
+        if(date.getMinutes() < 10){
+            minutes = "0" + date.getMinutes();
+        }
+        else{
+            minutes = date.getMinutes();
+        }
+        
+        str = "Meddelandet skrevs den " + day + " " + month + " " + year + " klockan " + hours + ":" + minutes;
         
         return str;
         
-        
-        //return this.getDate();
     }
     
     return this;

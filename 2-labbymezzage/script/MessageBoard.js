@@ -8,7 +8,6 @@ var MessageBoard = {
             var textInput = document.getElementById("textInputArea").value;
             var mess = new Message(textInput, new Date());
             MessageBoard.messages.push(mess);
-            //alert(MessageBoard.messages[0]);
             MessageBoard.renderMessages();
             
             document.getElementById("textInputArea").value="";
@@ -19,6 +18,23 @@ var MessageBoard = {
         var button = document.getElementById("skickaknapp");
         
         button.addEventListener("click", createMessage, false);
+        
+        var textInput = document.getElementById("textInputArea");
+        
+        textInput.onkeypress = keypress;
+
+        function keypress(e) {
+            
+            if(!e) var e = window.event;
+        
+            if(e.shiftKey && e.keyCode == 13){}
+            
+            else if(e.keyCode === 13){
+                createMessage();
+            }
+        }
+        
+        return false;
         
     },  
     
@@ -87,7 +103,12 @@ var MessageBoard = {
         //eraseButton.alt="Close";
         
         atag1.onclick = function () {
-            MessageBoard.removeMessage(messageID);
+            
+            var c = confirm("Vill du verkligen ta bort meddelandet?");
+            
+            if (c == true){
+                MessageBoard.removeMessage(messageID);
+            }
         };
         
         atag2.onclick = function () {
