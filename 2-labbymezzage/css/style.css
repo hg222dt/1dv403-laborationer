@@ -39,7 +39,6 @@ input {
     text-align: center;
     padding: 10px;
     font-family: 'Oleo Script Swash Caps', cursive;
-    
 }
 
 #messageBoard img {
@@ -62,4 +61,16 @@ input {
     position:relative;
     text-align: right;
     font-size: 0.8em;
+}
+
+.timeStamp {
+    text-align: right;
+    font-size: 0.8em;
+    margin-right: 20px;
+}
+
+.messageUnit{
+    border-bottom: 1px solid Black;
+    padding-left:20px;
+    margin-bottom: 10px;
 }

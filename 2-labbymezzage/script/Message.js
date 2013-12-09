@@ -15,6 +15,29 @@ function Message(message, date){
         date = _date;
     }
     
+    this.getMessageClockTime = function() {
+        var hours = date.getHours();
+        var minutes = "";
+        var seconds = "";
+        
+        if(date.getMinutes() < 10){
+            minutes = "0" + date.getMinutes();
+        }
+        else{
+            minutes = date.getMinutes();
+        }
+        
+        if(date.getSeconds() < 10){
+            seconds = "0" + date.getSeconds();
+        }
+        else{
+            seconds = date.getSeconds();
+        }
+        
+        var str = hours + ":" + minutes + ":" + seconds;
+        return str;
+    }
+    
     Message.prototype.toString = function (){
         return this.getText() + " (" + this.getDate() + ")";
     }

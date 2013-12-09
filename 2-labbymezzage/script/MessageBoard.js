@@ -74,6 +74,7 @@ var MessageBoard = {
         
         var div = document.createElement("div");
         var p = document.createElement("p");
+        div.setAttribute("class", "messageUnit")
         
         
         var imgClose = document.createElement("img");
@@ -83,19 +84,31 @@ var MessageBoard = {
         var imgTime = document.createElement("img");
         imgTime.setAttribute("src", "clock.png");
         
+        var timeStamp = document.createElement("p");
+        //var time1 = this.date.getHours();
+        //time1 = MessageBoard.messages[messageID].this.getDate.getHours() + ":" + MessageBoard.messages[messageID].this.getDate.getMinutes() + ":" + MessageBoard.messages[messageID].this.getDate.getSeconds();
+        var time = document.createTextNode(MessageBoard.messages[messageID].getMessageClockTime());
+        
+        timeStamp.setAttribute("class", "timeStamp")
+        
         
         p.innerHTML = MessageBoard.messages[messageID].getHTMLText();
         
         //var text = document.createTextNode(MessageBoard.messages[messageID].getText());
         //p.appendChild(text);
         
+    
+        
         messageBoard.appendChild(div);
         div.appendChild(p);
+        div.appendChild(timeStamp);
+        timeStamp.appendChild(time);
         
         div.appendChild(atag1);
         atag1.appendChild(imgClose);
         div.appendChild(atag2);
         atag2.appendChild(imgTime);
+        
         
         
         //var eraseButton = document.getElementsByClassName("TaBortKnapp");
