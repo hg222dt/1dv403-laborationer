@@ -87,9 +87,13 @@ var MessageBoard = {
         //eraseButton.alt="Close";
         
         atag1.onclick = function () {
-            alert("Du kommer ta bort ett meddelande");
             MessageBoard.removeMessage(messageID);
         };
+        
+        atag2.onclick = function () {
+            alert(MessageBoard.messages[messageID].getDateText());
+        };
+        
     },
     
     removeMessage: function (messageID) {
