@@ -41,6 +41,8 @@ input {
     font-family: 'Oleo Script Swash Caps', cursive;
 }
 
+/* Bild och länk för att ta bort och se klockslag på meddelande */
+
 #messageBoard img {
     width:30px;
 }
@@ -51,11 +53,17 @@ input {
     margin-right:0;
 }
 
+/* Text för själva meddelandet */
+
 #messageBoard p {
     width:80%;
     display: inline-block;
     margin-right: 20px;
+    margin-left: 20px;
 }
+
+
+/* Utskrift för antalet meddelanden. */
 
 #messageAmount {
     position:relative;
@@ -63,14 +71,33 @@ input {
     font-size: 0.8em;
 }
 
+
+/* Klockslag som meddelande skrevs */
+
 .timeStamp {
     text-align: right;
     font-size: 0.8em;
     margin-right: 20px;
 }
 
+
+/* Varje meddelande som skrivs ut */
+
 .messageUnit{
     border-bottom: 1px solid Black;
     padding-left:20px;
     margin-bottom: 10px;
+}
+
+
+/* Namnet på den som skrivit varje meddelande */
+
+.author {
+    margin-top:10px;
+    margin-bottom:0;
+    font-family: 'Oleo Script Swash Caps', cursive;
+}
+
+#messageBoard p, .timeStamp {
+    font-family: 'Source Sans Pro', sans-serif;
 }

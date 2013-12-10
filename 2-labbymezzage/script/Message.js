@@ -1,20 +1,27 @@
+//Konstuktrosfunktion som för att skapa objekt för respektive meddelande-objekt.
 function Message(message, date){
+    
+    //Funktion för att hämta meddelandetexten.
     this.getText = function () {
         return message;
     }
     
+    //Funktion för att modifiera eller sätta meddelandetexten.
     this.setText = function (_text) {
         message = _text;
     }
     
+    //Funktion för att hämta datum-objektet kopplat till meddelandet.
     this.getDate = function () {
         return date;
     }
     
+    //Funktion för att sätta datumet.
     this.setDate = function (_date) {
         date = _date;
     }
     
+    //Funktion för att hämta klockslaget som meddelandet är skrivet.
     this.getMessageClockTime = function() {
         var hours = date.getHours();
         var minutes = "";
@@ -38,17 +45,19 @@ function Message(message, date){
         return str;
     }
     
+    //Funktion för att hämta meddelandetexten och datumet i ren text.
     Message.prototype.toString = function (){
         return this.getText() + " (" + this.getDate() + ")";
     }
     
+    //Funktion för att hämta meddelandetexten i html-format.
     Message.prototype.getHTMLText = function() {
         var text = this.getText();
         
         return text.replace(/[\n\r]/g, "<br />");
-
     }
     
+    //Funktion för att hämta datum och tid som meddelande skrivits, i text.
     Message.prototype.getDateText = function() {
         var date = this.getDate();
         
