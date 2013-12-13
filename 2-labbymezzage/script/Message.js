@@ -20,25 +20,26 @@ function Message(message, date){
     this.setDate = function (_date) {
         date = _date;
     }
+}
     
     //Funktion för att hämta klockslaget som meddelandet är skrivet.
-    this.getMessageClockTime = function() {
-        var hours = date.getHours();
+    Message.prototype.getMessageClockTime = function() {
+        var hours = this.getDate().getHours();
         var minutes = "";
         var seconds = "";
         
-        if(date.getMinutes() < 10){
-            minutes = "0" + date.getMinutes();
+        if(this.getDate().getMinutes() < 10){
+            minutes = "0" + this.getDate().getMinutes();
         }
         else{
-            minutes = date.getMinutes();
+            minutes = this.getDate().getMinutes();
         }
         
-        if(date.getSeconds() < 10){
-            seconds = "0" + date.getSeconds();
+        if(this.getDate().getSeconds() < 10){
+            seconds = "0" + this.getDate().getSeconds();
         }
         else{
-            seconds = date.getSeconds();
+            seconds = this.getDate().getSeconds();
         }
         
         var str = hours + ":" + minutes + ":" + seconds;
@@ -137,7 +138,3 @@ function Message(message, date){
         return str;
         
     }
-    
-    return this;
-    
-}
