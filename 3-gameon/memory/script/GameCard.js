@@ -27,6 +27,12 @@ function GameCard(cardValue, cardOrder) {
         return imgCardUp;
     }
     
+    //Vänder upp memory-kortet.
+    this.setCardToUp = function (imgTag) {
+        //var imgTag = document.getElementById("img" + cardOrder);
+        imgTag.setAttribute("src", "pics/"+ cardValue +".png");
+    }
+    
     //Vänder tillbaka meory-kortet upp och ner igen.
     this.setCardToDown = function () {
         var imgTag = document.getElementById("img" + cardOrder);
