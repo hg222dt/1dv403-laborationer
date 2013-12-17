@@ -1,0 +1,57 @@
+
+<!doctype HTML>
+
+<html>
+    <head>
+        <meta charset="utf-8"/>
+        <title>Formulärvalidering</title>
+        <link href="css/styles.css" rel="stylesheet" />
+    </head>
+    <body>
+        <h1>Validering</h1>
+    
+        <form action="http://voyager.lnu.se/tekinet/kurser/dtt/wp_webbteknik/process_form.php" method="post" target="_blank" id="mainForm">
+            
+            <lable for="förnamn">Förnamn</lable>
+            <br>
+            <input type="text" name="Förnamn" id="firstName" />
+            <br>
+            <lable for="efternamn">Efternamn</lable>
+            <br>
+            <input type="text" name="Efternamn" id="lastName" />
+            <br>
+            <lable for="postnummer">Postnummer</lable>
+            <br>
+            <input type="text" name="Postnummer" id="zipCode" />
+            <br>
+            <lable for="email">E-post</lable>
+            <br>
+            <input type="email" name="Email" id="email" />
+            <br>
+            <lable for="rismodell">Prismodell</lable>
+            <br>
+            <select name="Prismodell" id="priceModel">
+                <option value="låg">Låg</option>
+                <option value="medium">Medium</option>
+                <option value="hög">Hög</option>
+            </select>
+            
+        <!--
+            <p>Förnamn</p>
+            <input type="text" id="förnamn" /> 
+            <p>Efternamn</p>
+            <input type="text" id="efternamn" /> 
+            <p>Postnummer</p>
+            <input type="text" id="postnummer" /> 
+            <p>E-post</p>
+            <input type="text" id="epost" /> 
+            <p>Prismodell</p>
+            <input type="text" id="prismodell" /> 
+        -->
+            
+            <input id="send" type="submit" value="Validera!" />
+        </form>
+        
+        <script type="text/javascript" src="script/Validator.js"></script>
+    </body>
+</html>
