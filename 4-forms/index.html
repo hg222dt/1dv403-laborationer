@@ -8,36 +8,32 @@
         <link href="css/styles.css" rel="stylesheet" />
     </head>
     <body>
-        <h1>Validering</h1>
-    
-        <form action="http://voyager.lnu.se/tekinet/kurser/dtt/wp_webbteknik/process_form.php" method="post" target="_blank" id="mainForm">
-            
-            <lable for="förnamn">Förnamn</lable>
-            <br>
-            <input type="text" name="Förnamn" id="firstName" value="Förnamn" />
-            <br>
-            <lable for="efternamn">Efternamn</lable>
-            <br>
-            <input type="text" name="Efternamn" id="lastName" />
-            <br>
-            <lable for="postnummer">Postnummer</lable>
-            <br>
-            <input type="text" name="Postnummer" id="zipCode" />
-            <br>
-            <lable for="email">E-post</lable>
-            <br>
-            <input type="text" name="Email" id="email" />
-            <br>
-            <lable for="Prismodell">Prismodell</lable>
-            <br>
-            <select name="Prismodell" id="priceModel">
-                <option value="låg">Låg</option>
-                <option value="medium">Medium</option>
-                <option value="hög">Hög</option>
-            </select>
- 
-            <input id="send" type="submit" value="Validera!" />
-        </form>
+        <div id="container">
+            <h1>Validering</h1>
+        
+            <form action="http://voyager.lnu.se/tekinet/kurser/dtt/wp_webbteknik/process_form.php" method="post" target="_blank" id="mainForm">
+                
+                <input type="text" name="Förnamn" id="firstName" value="Förnamn" />
+                <span id="firstNameSpan"></span>
+                <br>
+                <input type="text" name="Efternamn" id="lastName" value="Efternamn" />
+                <span id="lastNameSpan"></span>
+                <br>
+                <input type="text" name="Postnummer" id="zipCode" value="Postnummer" />
+                <span id="zipCodeSpan"></span>
+                <br>
+                <input type="text" name="Email" id="email"  value="E-post" />
+                <span id="emailSpan"></span>
+                <br>
+                <select name="Prismodell" id="priceModel">
+                    <option value="låg">Låg</option>
+                    <option value="medium">Medium</option>
+                    <option value="hög">Hög</option>
+                </select>
+     
+                <input id="send" type="submit" value="Validera!" />
+            </form>
+        </div>
         
         <script type="text/javascript" src="script/Validator.js"></script>
     </body>
