@@ -45,10 +45,14 @@ var Validator = {
                 stop = true;
                 fnSpanText.nodeValue = "Förnamnet har inte fyllts i.";
                 stop = true ;
+                
+                setToRed(fn);
+                
             }
             else{
                 fnSpanText.nodeValue = "";
                 stop = false;
+                setToGreen(fn);
             }
         }
         
@@ -56,10 +60,12 @@ var Validator = {
             if (ln.value.length === 0 || ln.value === "Efternamn") {
                 stop = true;
                 lnSpanText.nodeValue = "Efternamnet har inte fyllts i.";
+                setToRed(ln);
             }
             else{
                 lnSpanText.nodeValue = "";
                 stop = false;
+                setToGreen(ln);
             }
         }
         
@@ -70,6 +76,7 @@ var Validator = {
                 zc.value = zc.value.replace(/(SE)?\s?-?/g, "");
                 zcSpanText.nodeValue = "";
                 stop = false;
+                setToGreen(zc);
             }
             else {
                 if (zc.value.length === 0 || zc.value === "Postnummer") {
@@ -80,6 +87,7 @@ var Validator = {
                     zcSpanText.nodeValue = "Fel format på postnummret.";
                     stop = true;
                 }
+                setToRed(zc);
             }
         }
         
@@ -87,6 +95,7 @@ var Validator = {
             if(em.value.match(patternEmail)){
                 emSpanText.nodeValue = "";
                 stop = false;
+                setToGreen(em);
             }
             else {
                 
@@ -98,6 +107,7 @@ var Validator = {
                     emSpanText.nodeValue = "E-postadressen är inte giltlig.";
                     stop = true;
                 }
+                setToRed(em);
             }
         }
         
@@ -111,6 +121,14 @@ var Validator = {
             
             if(stop === true)
                 return false;
+        }
+        
+        function setToRed(v){
+            v.setAttribute("class", "redInput");
+        }
+        
+        function setToGreen(v){
+            v.setAttribute("class", "greenInput");
         }
             
     }

@@ -6,6 +6,7 @@
         <meta charset="utf-8"/>
         <title>Formulärvalidering</title>
         <link href="css/styles.css" rel="stylesheet" />
+        <link href='//fonts.googleapis.com/css?family=Montserrat:400,700' rel='stylesheet' type='text/css'>
     </head>
     <body>
         <div id="container">
@@ -13,16 +14,16 @@
         
             <form action="http://voyager.lnu.se/tekinet/kurser/dtt/wp_webbteknik/process_form.php" method="post" target="_blank" id="mainForm">
                 
-                <input type="text" name="Förnamn" id="firstName" value="Förnamn" />
+                <input type="text" name="Förnamn" id="firstName" class="blueInput" value="Förnamn" />
                 <span id="firstNameSpan"></span>
                 <br>
-                <input type="text" name="Efternamn" id="lastName" value="Efternamn" />
+                <input type="text" name="Efternamn" id="lastName" class="blueInput" value="Efternamn" />
                 <span id="lastNameSpan"></span>
                 <br>
-                <input type="text" name="Postnummer" id="zipCode" value="Postnummer" />
+                <input type="text" name="Postnummer" id="zipCode" class="blueInput" value="Postnummer" />
                 <span id="zipCodeSpan"></span>
                 <br>
-                <input type="text" name="Email" id="email"  value="E-post" />
+                <input type="text" name="Email" id="email" class="blueInput" value="E-post" />
                 <span id="emailSpan"></span>
                 <br>
                 <select name="Prismodell" id="priceModel">
