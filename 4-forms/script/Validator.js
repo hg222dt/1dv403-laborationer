@@ -1,4 +1,3 @@
-//eventuellt ta bort overflow på popup i styles.
 //Ha med e.preventDefault()??
 //Läs kraven på labben
 
@@ -165,25 +164,30 @@ var Validator = {
             
             
             var _fn = document.createElement("p");
-            _fn.textContent = "Förnamn: " + fn.value;
+            _fn.textContent = fn.name + ": " + fn.value;
             
             var _ln = document.createElement("p");
-            _ln.textContent = "Efternamn: " + ln.value;
+            _ln.textContent = ln.name + ": " + ln.value;
             
             var _zc = document.createElement("p");
-            _zc.textContent = "Postnummer: " + zc.value;
+            _zc.textContent = zc.name + ": " + zc.value;
             
             var _em = document.createElement("p");
-            _em.textContent = "E-post: " + em.value;
+            _em.textContent = em.name + ": " + em.value;
             
             var _pm = document.createElement("p");
-            _pm.textContent = "Prismodell: " + pm.value;
+            _pm.textContent = pm.name + ": " + pm.value;
             
             
             var confirmButton = document.createElement("input");
             confirmButton.setAttribute("id","confirm");
             confirmButton.setAttribute("type","submit");
             confirmButton.setAttribute("value","Bekräfta");
+            
+            var cancelButton = document.createElement("input");
+            cancelButton.setAttribute("id","cancel");
+            cancelButton.setAttribute("type","submit");
+            cancelButton.setAttribute("value","Avbryt");
             
             div.appendChild(titel);
             div.appendChild(_fn);
@@ -192,11 +196,17 @@ var Validator = {
             div.appendChild(_em);
             div.appendChild(_pm);
             div.appendChild(confirmButton);
+            div.appendChild(cancelButton);
             
             document.body.appendChild(divBG);
             document.body.appendChild(div);
             
-            //divBG.onclick = removePopup;
+            cancelButton.addEventListener("click", function() {
+                var cancelPopup = document.getElementById("popupWindow");
+                var cancelBG = document.getElementById("popupBG");
+                cancelPopup.remove();
+                cancelBG.remove();
+            }, false);
             
             divBG.addEventListener("click", function() {
                 var cancelPopup = document.getElementById("popupWindow");
