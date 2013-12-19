@@ -1,3 +1,10 @@
+//Fixa så att confirmrutan inte dublleras efter flera ggr. johan har nog något om det.
+//Fixa så att info skickas när man konfirmerar.
+//Fixa så att input-fält blir gröna när man blurar dem och de är godkända.
+//fixa med selctrutna så den blir grön när man valt något en gång.
+//eventuellt ta bort overflow på popup i styles.
+//Lås scrollningen vid popupen.
+
 "use strict";
 
 var Validator = {
@@ -28,6 +35,11 @@ var Validator = {
         
         var patternZipCode = /^\d{5}$|^\d{3}[- ]\d{2}$|^(SE)+\d{5}$|^(SE)+\d{3}[- ]\d{2}$|^(SE )+\d{5}$|^(SE )+\d{3}[- ]\d{2}$/;
         var patternEmail = /^[\w]+(\.[\w]+)*@([\w]+\.)+[a-z]{2,7}$/i;
+        
+        var divBG = document.createElement("div")
+        divBG.className = "popupBG"
+        var div = document.createElement("div");
+        div.className = "popupWindow";
         
         //Skapa onkeyup event mm.
         
@@ -121,6 +133,10 @@ var Validator = {
             
             if(stop === true)
                 return false;
+            else{
+                popup();
+                return false;
+            }
         }
         
         function setToRed(v){
@@ -129,6 +145,58 @@ var Validator = {
         
         function setToGreen(v){
             v.setAttribute("class", "greenInput");
+        }
+        
+        function popup(){
+            
+            
+            
+            //Utskrift i popup-rutan
+            var titel = document.createElement("h1");
+            titel.setAttribute("id","titelPopup");
+            titel.innerHTML = "Bekräfta köp";
+            
+            
+            var _fn = document.createElement("p");
+            _fn.innerHTML = "Förnamn: " + fn.value;
+            
+            var _ln = document.createElement("p");
+            _ln.innerHTML = "Efternamn: " + ln.value;
+            
+            var _zc = document.createElement("p");
+            _zc.innerHTML = "Postnummer: " + zc.value;
+            
+            var _em = document.createElement("p");
+            _em.innerHTML = "E-post: " + em.value;
+            
+            var _pm = document.createElement("p");
+            _pm.innerHTML = "Prismodell: " + pm.value;
+            
+            
+            var confirmButton = document.createElement("input");
+            confirmButton.setAttribute("id","confirm");
+            confirmButton.setAttribute("type","submit");
+            confirmButton.setAttribute("value","Bekräfta");
+            
+            div.appendChild(titel);
+            div.appendChild(_fn);
+            div.appendChild(_ln);
+            div.appendChild(_zc);
+            div.appendChild(_em);
+            div.appendChild(_pm);
+            div.appendChild(confirmButton);
+            
+            document.body.appendChild(divBG);
+            document.body.appendChild(div);
+            
+            divBG.onclick = removePopup;
+            
+            return false;
+        }
+        
+        function removePopup(){
+            document.body.removeChild(div);
+            document.body.removeChild(divBG);
         }
             
     }
