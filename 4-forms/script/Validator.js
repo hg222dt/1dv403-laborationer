@@ -1,9 +1,6 @@
-//Fixa så att confirmrutan inte dublleras efter flera ggr. johan har nog något om det.
-//Fixa så att info skickas när man konfirmerar.
-//Fixa så att input-fält blir gröna när man blurar dem och de är godkända.
-//fixa med selctrutna så den blir grön när man valt något en gång.
 //eventuellt ta bort overflow på popup i styles.
-//Lås scrollningen vid popupen.
+//Ha med e.preventDefault()??
+//Läs kraven på labben
 
 "use strict";
 
@@ -36,14 +33,15 @@ var Validator = {
         var patternZipCode = /^\d{5}$|^\d{3}[- ]\d{2}$|^(SE)+\d{5}$|^(SE)+\d{3}[- ]\d{2}$|^(SE )+\d{5}$|^(SE )+\d{3}[- ]\d{2}$/;
         var patternEmail = /^[\w]+(\.[\w]+)*@([\w]+\.)+[a-z]{2,7}$/i;
         
-        var divBG = document.createElement("div")
-        divBG.className = "popupBG"
-        var div = document.createElement("div");
-        div.className = "popupWindow";
+
         
         //Skapa onkeyup event mm.
         
-        
+        fn.onblur = validateFirstName;
+        ln.onblur = validateLastName;
+        zc.onblur = validateZipCode;
+        em.onblur = validateEmail;
+        pm.onblur = setPMToGreen;
         form.onsubmit = validateForm;
         
         fn.focus();
@@ -59,6 +57,8 @@ var Validator = {
                 stop = true ;
                 
                 setToRed(fn);
+                
+                
                 
             }
             else{
@@ -110,15 +110,13 @@ var Validator = {
                 setToGreen(em);
             }
             else {
-                
                 if (em.value.length === 0 || em.value === "E-post") {
-                    stop = true;
                     emSpanText.nodeValue = "E-postadressen har inte fyllts i.";
                 }
                 else{
                     emSpanText.nodeValue = "E-postadressen är inte giltlig.";
-                    stop = true;
                 }
+                stop = true;
                 setToRed(em);
             }
         }
@@ -147,30 +145,39 @@ var Validator = {
             v.setAttribute("class", "greenInput");
         }
         
+        function setPMToGreen(v){
+            pm.setAttribute("class", "greenInput");
+        }
+        
         function popup(){
             
-            
+            var divBG = document.createElement("div");
+            divBG.setAttribute("id","popupBG");
+            divBG.className = "popupBG";
+            var div = document.createElement("div");
+            div.setAttribute("id","popupWindow");
+            div.className = "popupWindow";
             
             //Utskrift i popup-rutan
             var titel = document.createElement("h1");
             titel.setAttribute("id","titelPopup");
-            titel.innerHTML = "Bekräfta köp";
+            titel.textContent = "Bekräfta köp";
             
             
             var _fn = document.createElement("p");
-            _fn.innerHTML = "Förnamn: " + fn.value;
+            _fn.textContent = "Förnamn: " + fn.value;
             
             var _ln = document.createElement("p");
-            _ln.innerHTML = "Efternamn: " + ln.value;
+            _ln.textContent = "Efternamn: " + ln.value;
             
             var _zc = document.createElement("p");
-            _zc.innerHTML = "Postnummer: " + zc.value;
+            _zc.textContent = "Postnummer: " + zc.value;
             
             var _em = document.createElement("p");
-            _em.innerHTML = "E-post: " + em.value;
+            _em.textContent = "E-post: " + em.value;
             
             var _pm = document.createElement("p");
-            _pm.innerHTML = "Prismodell: " + pm.value;
+            _pm.textContent = "Prismodell: " + pm.value;
             
             
             var confirmButton = document.createElement("input");
@@ -189,16 +196,19 @@ var Validator = {
             document.body.appendChild(divBG);
             document.body.appendChild(div);
             
-            divBG.onclick = removePopup;
+            //divBG.onclick = removePopup;
             
-            return false;
-        }
-        
-        function removePopup(){
-            document.body.removeChild(div);
-            document.body.removeChild(divBG);
-        }
+            divBG.addEventListener("click", function() {
+                var cancelPopup = document.getElementById("popupWindow");
+                var cancelBG = document.getElementById("popupBG");
+                cancelPopup.remove();
+                cancelBG.remove();
+            }, false);
             
+            confirmButton.addEventListener("click", function() {
+                form.submit();
+            }, false);
+        }
     }
 };
 
