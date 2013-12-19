@@ -2,6 +2,7 @@ body{
     font-family: 'Montserrat', sans-serif;
 }
 
+/*div-tagg med formuläret direkt inuti*/
 #container{
     width: 500px;
     margin-left: auto;
@@ -14,6 +15,7 @@ body{
     border-radius: 50px;
 }
 
+/*class för att skapa blå kant på input och select-fält*/
 .blueInput {
     margin-top:10px;
     margin-bottom: 10px;
@@ -23,6 +25,7 @@ body{
     padding-left: 10px;
 }
 
+/*class för att skapa grön kant på input och select-fält*/
 .greenInput{
     margin-top:10px;
     margin-bottom: 10px;
@@ -32,6 +35,7 @@ body{
     padding-left: 10px;
 }
 
+/*class för att skapa röd kant på input och select-fält*/
 .redInput{
     margin-top:10px;
     margin-bottom: 10px;
@@ -41,12 +45,14 @@ body{
     padding-left: 10px;
 }
 
+/*egenskaper för dropdown-menyn */
 select {
     display: block;
     margin-top: 5px;
     margin-bottom: 15px;
 }
 
+/*Egenskaper för popup-ruten*/
 .popupWindow {
     border: 1px solid black;
     position: relative;
@@ -59,6 +65,7 @@ select {
     padding-bottom: 30px;
 }
 
+/*Egenskaper för bakgrunden till popup-rutan*/
 .popupBG {
     position: absolute;
     top: 0;
@@ -69,6 +76,7 @@ select {
     min-height: 100%;
 }
 
+/*Egenskaper för span-taggarna brevid formulär-fälten*/
 .spanText {
     margin-left: 10px;
 }
