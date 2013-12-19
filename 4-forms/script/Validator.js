@@ -43,7 +43,9 @@ var Validator = {
         ln.onblur = validateLastName;
         zc.onblur = validateZipCode;
         em.onblur = validateEmail;
+        
         pm.onblur = setPMToGreen;
+        
         form.onsubmit = validateForm;
         
         //Gör att första fältet blir  markerat och går att skriva i direkt när sidan laddats.
@@ -149,8 +151,9 @@ var Validator = {
         }
         
         //Sätter prismodell-fält till grönt
-        function setPMToGreen(v){
-            pm.setAttribute("class", "greenInput");
+        function setPMToGreen(){
+            if(pm.selectedIndex!=0)
+                pm.setAttribute("class", "greenInput");
         }
         
         //Funktion för bekräftelse-popuprutan.
