@@ -158,6 +158,12 @@ var Validator = {
         
         //Funktion för bekräftelse-popuprutan.
         function popup(){
+            fn.disabled = true;
+            ln.disaabled = true;
+            zc.disabled = true;
+            em.disabled = true;
+            pm.disabled = true;
+            
             var divBG = document.createElement("div");
             divBG.setAttribute("id","popupBG");
             divBG.className = "popupBG";
@@ -226,6 +232,12 @@ var Validator = {
             
             //Event-hanterare för bekräfelse-knapp.
             confirmButton.addEventListener("click", function() {
+                fn.disabled = false;
+                ln.disabled = false;
+                zc.disabled = false;
+                em.disabled = false;
+                pm.disabled = false;
+                
                 form.submit();
             }, false);
         }
