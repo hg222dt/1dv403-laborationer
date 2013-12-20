@@ -220,6 +220,12 @@ var Validator = {
                 var cancelBG = document.getElementById("popupBG");
                 cancelPopup.remove();
                 cancelBG.remove();
+                
+                fn.disabled = false;
+                ln.disabled = false;
+                zc.disabled = false;
+                em.disabled = false;
+                pm.disabled = false;
             }, false);
             
             //Event-hanterare för händelse av klick på bakgrund i popup-rutan.
@@ -228,6 +234,12 @@ var Validator = {
                 var cancelBG = document.getElementById("popupBG");
                 cancelPopup.remove();
                 cancelBG.remove();
+                
+                fn.disabled = false;
+                ln.disabled = false;
+                zc.disabled = false;
+                em.disabled = false;
+                pm.disabled = false;
             }, false);
             
             //Event-hanterare för bekräfelse-knapp.
