@@ -35,7 +35,10 @@ var game = {
                 
                 if(game.twoClicks == 0 && game.totalAttempts > 0 && game.lastWin == false){
                     game.chosenCards[0].setCardToDown();
-                    game.chosenCards[1].setCardToDown();
+                    game.chosenCards[1].setCardToDown;
+                    
+                    game.gameCards[i].clickable = true;
+                    game.chosenCards[game.chosenCards.length-2].clickable = true;
                 }
                 
                 game.gameCards[i].setCardToUp(aTag.firstChild);
@@ -77,10 +80,10 @@ var game = {
                             img2.setAttribute("src", "pics/0.png");
                             tempCard1.setCardToDown();
                             tempCard2.setCardToDown();
-                            game.gameCards[i].clickable = true;
-                            game.chosenCards[game.chosenCards.length-2].clickable = true;
-                            
                         },2000);
+                        
+                        game.gameCards[i].clickable = true;
+                        game.chosenCards[game.chosenCards.length-2].clickable = true;
                         
                         game.lastWin = false;
                     }

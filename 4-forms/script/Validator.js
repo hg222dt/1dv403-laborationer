@@ -159,7 +159,7 @@ var Validator = {
         //Funktion för bekräftelse-popuprutan.
         function popup(){
             fn.disabled = true;
-            ln.disaabled = true;
+            ln.disabled = true;
             zc.disabled = true;
             em.disabled = true;
             pm.disabled = true;
