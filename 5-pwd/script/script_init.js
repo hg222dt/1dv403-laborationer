@@ -1,18 +1,20 @@
 "use strict";
 
-var PRDT = PRDT || {};
+var temp = temp || {};
 
-PRDT.init = function () {
+temp.init = function () {
     var galleryButton = document.getElementById("galleryButton");
     
-    galleryButton.onclick = function () {
-        PRDT.galleryWindow();
-    };
     
-    PRDT.galleryWindow = function () {
-        var galleryWindow = new PRDT._galleryWindow();
-        galleryWindow.openWindow();
+    galleryButton.onclick = function (e) {
+        e.preventDefault();
+        temp.newGalleryWindow();
     };
 };
+    
+temp.newGalleryWindow = function () {
+    var galleryWindow = new temp.GalleryWindow();
+    galleryWindow.open();
+};
 
-window.onload = PRDT.init;
+window.onload = temp.init;
