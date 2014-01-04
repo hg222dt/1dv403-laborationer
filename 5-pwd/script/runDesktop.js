@@ -2,19 +2,16 @@
 
 var temp = temp || {};
 
+//Initierande funktionen
 temp.init = function () {
     var galleryButton = document.getElementById("galleryButton");
     
     
     galleryButton.onclick = function (e) {
         e.preventDefault();
-        temp.newGalleryWindow();
+        var galleryWindow = new temp.GalleryWindow();
+        galleryWindow.open();
     };
-};
-    
-temp.newGalleryWindow = function () {
-    var galleryWindow = new temp.GalleryWindow();
-    galleryWindow.open();
 };
 
 window.onload = temp.init;

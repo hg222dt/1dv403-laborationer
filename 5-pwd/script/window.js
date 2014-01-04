@@ -3,46 +3,49 @@ var temp = temp || {};
 
 //För att öppna fönstret
 //Fixa så att det faktiskt kopplas när man kallar på det från init.
-
 temp.Window.open = function () {
     
-    var e = this.element;
+    console.log("Open körs");
     
-    console.log("Testar open");
+    var WindowContainer = document.createElement("div");
+    WindowContainer.style.width = this.width + "px";
+    WindowContainer.style.height = this.height + "px";
+    WindowContainer.id = "windowContainer";
     
-    e.WindowContainer = document.CreateElement("div");
-    e.WindowContainer.style.width = this.width + "px";
-    e.WindowContainer.style.height = this.height + "px";
-    e.WindowContainer.id = "windowContainer";
-    e.header = document.createElement("div");
-    e.header.style.width = this.width + "px";
-    e.header.style.height = "20 px";
-    e.header.id = "windowHeader";
-    e.icon = document.createElement("img");
-    e.icon.style.width = "10px";
-    e.icon.style.height = "10 px";
-    e.icon.classname = "icon";
-    e.icon.setAttribute("src", this.icon);
-    e.titleText = document.createElement("h2");
-    e.textContent = this.title;
-    e.contentDiv = document.createElement("div");
-    e.button = document.createElement("img");
-    e.button.setAttribute("src", "pic.png");
-    e.footer = document.createElement("div");
+    var header = document.createElement("div");
+    header.style.width = this.width + "px";
+    header.style.height = "20 px";
+    header.id = "windowHeader";
+    
+    var icon = document.createElement("img");
+    icon.style.width = "10px";
+    icon.style.height = "10 px";
+    icon.classname = "icon";
+    icon.setAttribute("src", this.icon);
+    
+    var titleText = document.createElement("h2");
+    titleText.textContent = this.title;
+    
+    var contentDiv = document.createElement("div");
+    
+    var button = document.createElement("img");
+    button.setAttribute("src", "pic.png");
+    
+    var footer = document.createElement("div");
     
     var desktopContainer = document.getElementById("container");
     
     //Lägger till i DOMen
-    desktopContainer.appendChild(e.WindowContainer);
+    desktopContainer.appendChild(WindowContainer);
     
-    e.WindowContainer.appendChild(e.header);
-    e.WindowContainer.appendChild(e.contentDiv);
-    e.WindowContainer.appendChild(e.footer);
-    e.header.appendChild(e.icon);
-    e.header.appendChild(e.titleText);
-    e.header.appendChild(e.button);
+    WindowContainer.appendChild(header);
+    WindowContainer.appendChild(contentDiv);
+    WindowContainer.appendChild(footer);
+    header.appendChild(icon);
+    header.appendChild(titleText);
+    header.appendChild(button);
 
-    e.button.onclick = function () {
+    button.onclick = function () {
         // ta bort child här
     };
 };
@@ -54,6 +57,6 @@ temp.Window = function (title, icon, height, width) {
     this.height = height;
     this.width = width;
     
-    
+    //Skriver ut för att se så att konstruktorn verkligen anropas
     console.log(title, icon, height, width);
 };
