@@ -1,6 +1,17 @@
 "use strict";
 var temp = temp || {};
 
+//Konsturktor
+temp.Window = function (title, icon, height, width) {
+    this.title = title;
+    this.icon = icon;
+    this.height = height;
+    this.width = width;
+    
+    //Skriver ut för att se så att konstruktorn verkligen anropas
+    console.log(title, icon, height, width);
+};
+
 //För att öppna fönstret
 //Fixa så att det faktiskt kopplas när man kallar på det från init.
 temp.Window.open = function () {
@@ -50,13 +61,3 @@ temp.Window.open = function () {
     };
 };
 
-//Konsturktor
-temp.Window = function (title, icon, height, width) {
-    this.title = title;
-    this.icon = icon;
-    this.height = height;
-    this.width = width;
-    
-    //Skriver ut för att se så att konstruktorn verkligen anropas
-    console.log(title, icon, height, width);
-};
