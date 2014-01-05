@@ -1,0 +1,9 @@
+.windowFooter {
+    position: relative;
+    margin-bottom: 0;
+}
+
+.windowContainer {
+    border-radius: 10px;
+    border: 1px solid black;
+}

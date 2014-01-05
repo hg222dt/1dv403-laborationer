@@ -1,9 +1,8 @@
 "use strict";
-var temp = temp || {};
+var HEDE = HEDE || {};
 
-
-temp.GalleryWindow = function () {
-    temp.Window.call(this, "testtitel", "test.png", 50, 50);
+HEDE.GalleryWindow = function () {
+    HEDE.Window.call(this, "Bildgalleri", "test.png", 200, 200);
 };
 
-temp.GalleryWindow.prototype = Object.create(temp.Window.prototype);
+HEDE.GalleryWindow.prototype = Object.create(HEDE.Window.prototype);

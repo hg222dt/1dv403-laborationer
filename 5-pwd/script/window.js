@@ -1,8 +1,8 @@
 "use strict";
-var temp = temp || {};
+var HEDE = HEDE || {};
 
 //Konsturktor
-temp.Window = function (title, icon, height, width) {
+HEDE.Window = function (title, icon, height, width) {
     this.title = title;
     this.icon = icon;
     this.height = height;
@@ -14,35 +14,52 @@ temp.Window = function (title, icon, height, width) {
 
 //För att öppna fönstret
 //Fixa så att det faktiskt kopplas när man kallar på det från init.
-temp.Window.open = function () {
+HEDE.Window.prototype.open = function () {
     
     console.log("Open körs");
     
+    //huvudfönstret
     var WindowContainer = document.createElement("div");
     WindowContainer.style.width = this.width + "px";
     WindowContainer.style.height = this.height + "px";
-    WindowContainer.id = "windowContainer";
+    WindowContainer.className = "windowContainer";
     
+    WindowContainer.style.position = "absolute";
+    WindowContainer.style.top = 30 + "px";
+    WindowContainer.style.left = 400 + "px";
+    
+    
+    //header-div
     var header = document.createElement("div");
     header.style.width = this.width + "px";
-    header.style.height = "20 px";
-    header.id = "windowHeader";
+    header.style.height = 20 + "px";
+    header.className = "windowHeader";
     
+    //icon till vänster i header
     var icon = document.createElement("img");
     icon.style.width = "10px";
     icon.style.height = "10 px";
-    icon.classname = "icon";
+    icon.className = "icon";
     icon.setAttribute("src", this.icon);
     
-    var titleText = document.createElement("h2");
+    //rut-titel i header
+    var titleText = document.createElement("span");
     titleText.textContent = this.title;
     
-    var contentDiv = document.createElement("div");
-    
+    //knapp för att stänga av fönstret
     var button = document.createElement("img");
     button.setAttribute("src", "pic.png");
     
+    //div för content
+    var contentDiv = document.createElement("div");
+    contentDiv.style.width = this.width + "px";
+    contentDiv.style.height = 20 + "px";
+    contentDiv.className = "windowContent";
+    
     var footer = document.createElement("div");
+    footer.style.width = this.width + "px";
+    footer.style.height = 20 + "px";
+    footer.className = "windowFooter";
     
     var desktopContainer = document.getElementById("container");
     
@@ -56,8 +73,16 @@ temp.Window.open = function () {
     header.appendChild(titleText);
     header.appendChild(button);
 
+    //För att stänga fönstret
     button.onclick = function () {
-        // ta bort child här
+        desktopContainer.removeChild(WindowContainer);
     };
 };
 
+
+
+/*
+        nodeList = document.getElementsByClassName("nwcontent"),
+        contentDiv = nodeList[nodeList.length-1],
+        
+        */
