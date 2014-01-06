@@ -25,8 +25,8 @@ HEDE.Window.prototype.open = function () {
     WindowContainer.className = "windowContainer";
     
     WindowContainer.style.position = "absolute";
-    WindowContainer.style.top = 30 + "px";
-    WindowContainer.style.left = 400 + "px";
+    WindowContainer.style.top = 30 + (40 * HEDE.clickCounter) + "px";
+    WindowContainer.style.left = 400 + (50 * HEDE.clickCounter) + "px";
     
     
     //header-div
@@ -37,25 +37,31 @@ HEDE.Window.prototype.open = function () {
     
     //icon till vänster i header
     var icon = document.createElement("img");
-    icon.style.width = "10px";
-    icon.style.height = "10 px";
-    icon.className = "icon";
+    icon.style.width = "20px";
+    icon.style.height = "20 px";
+    icon.className = "windowIcon";
     icon.setAttribute("src", this.icon);
     
     //rut-titel i header
     var titleText = document.createElement("span");
+    titleText.className = "windowTitle"
     titleText.textContent = this.title;
     
     //knapp för att stänga av fönstret
     var button = document.createElement("img");
-    button.setAttribute("src", "pic.png");
+    button.className = "buttonClose";
+    button.setAttribute("src", "pics/closeImg.png");
+    button.style.width = "15px";
+    button.style.height = "15 px";
     
     //div för content
     var contentDiv = document.createElement("div");
     contentDiv.style.width = this.width + "px";
-    contentDiv.style.height = 20 + "px";
+    contentDiv.style.height = (this.height - 42) + "px";
     contentDiv.className = "windowContent";
     
+    
+    //div för footer
     var footer = document.createElement("div");
     footer.style.width = this.width + "px";
     footer.style.height = 20 + "px";
