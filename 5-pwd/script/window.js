@@ -28,7 +28,6 @@ HEDE.Window.prototype.open = function () {
     WindowContainer.style.top = 30 + (40 * HEDE.clickCounter) + "px";
     WindowContainer.style.left = 400 + (50 * HEDE.clickCounter) + "px";
     
-    
     //header-div
     var header = document.createElement("div");
     header.style.width = this.width + "px";

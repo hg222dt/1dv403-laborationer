@@ -12,8 +12,14 @@ var AjaxTester = {
         var url = "http://homepage.lnu.se/staff/tstjo/labbyServer/imgviewer/";
         
         var myCallBack = function (responseText) {
-            //rsposnse-text skaomvandlas till vaiabel med hjälp av json.
-            alert(responseText);
+            var jsonStr = responseText;
+            var images = eval(jsonStr);
+            alert(images[0].URL);
+            
+            var img = document.createElement("img");
+            img.setAttribute("src", images[0].URL);
+            var imageDiv = document.getElementById("imageDiv");
+            imageDiv.appendChild(img);
         };
         
         new AjaxCon(url, myCallBack);

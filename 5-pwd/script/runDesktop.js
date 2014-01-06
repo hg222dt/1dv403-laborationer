@@ -14,6 +14,7 @@ HEDE.init = function () {
         galleryWindow.open();
         HEDE.clickCounter++;
         console.log(HEDE.clickCounter);
+        HEDE.getImages();
     };
 };
 
