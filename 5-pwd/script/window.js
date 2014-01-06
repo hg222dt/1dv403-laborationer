@@ -16,8 +16,6 @@ HEDE.Window = function (title, icon, height, width) {
 //Fixa så att det faktiskt kopplas när man kallar på det från init.
 HEDE.Window.prototype.open = function () {
     
-    console.log("Open körs");
-    
     //huvudfönstret
     var WindowContainer = document.createElement("div");
     WindowContainer.style.width = this.width + "px";
@@ -25,8 +23,8 @@ HEDE.Window.prototype.open = function () {
     WindowContainer.className = "windowContainer";
     
     WindowContainer.style.position = "absolute";
-    WindowContainer.style.top = 30 + (40 * HEDE.clickCounter) + "px";
-    WindowContainer.style.left = 400 + (50 * HEDE.clickCounter) + "px";
+    WindowContainer.style.top = 30 + (40 * HEDE.windowStats.clickCounter) + "px";
+    WindowContainer.style.left = 400 + (50 * HEDE.windowStats.clickCounter) + "px";
     
     //header-div
     var header = document.createElement("div");
@@ -81,5 +79,15 @@ HEDE.Window.prototype.open = function () {
     //För att stänga fönstret
     button.onclick = function () {
         desktopContainer.removeChild(WindowContainer);
+        
+        //om det senast öppnade fönstret stängs så ska clickcounter minskas med 1.
+        
+        var nodeList = document.getElementsByClassName("windowContent");
+        var imageDiv = nodeList[nodeList.length-1];
+    };
+    
+    header.onclick = function () {
+        HEDE.windowStats.clickCounter2++;
+        WindowContainer.style.zIndex = HEDE.windowStats.clickCounter2;
     };
 };

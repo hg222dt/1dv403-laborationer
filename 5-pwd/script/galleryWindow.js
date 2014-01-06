@@ -14,14 +14,23 @@ HEDE.getImages = function () {
    
         var url = "http://homepage.lnu.se/staff/tstjo/labbyServer/imgviewer/";
         
+        var nodeList = document.getElementsByClassName("windowContent");
+        var lastNode = nodeList[nodeList.length-1];
+        var loaderIcon = document.createElement("img");
+        loaderIcon.setAttribute("src", "pics/ajax-loader.gif")
+        loaderIcon.setAttribute("class","loaderIcon");
+        var nodeListFooter = document.getElementsByClassName("windowFooter");
+        var lastFooter = nodeListFooter[nodeListFooter.length-1];
+        
         var myCallBack = function (responseText) {
             var jsonStr = responseText;
             HEDE.imageURLs = eval(jsonStr);
-            alert("Ajax redo");
             
-            var nodeList = document.getElementsByClassName("windowContent");
             var container = document.getElementById("container");
             
+            setTimeout(function() {
+                lastFooter.removeChild(loaderIcon);
+            }, 300);
             
             //renderar ut alla bilder i windowContent
             for(var i in HEDE.imageURLs)(function(i){ 
@@ -29,9 +38,7 @@ HEDE.getImages = function () {
                 var img = document.createElement("img");
                 img.setAttribute("src", HEDE.imageURLs[i].thumbURL);
                 
-                var imageDiv = nodeList[nodeList.length-1];
-            
-                imageDiv.appendChild(img);
+                lastNode.appendChild(img);
             
                 img.onclick = function () {
                     HEDE.imageLoader.setBackground(i);
@@ -39,7 +46,11 @@ HEDE.getImages = function () {
             })(i);
         };
         
+        //Gör så att ikonen endast visas om anropet tar längre än 300 ms
         new AjaxCon(url, myCallBack);
+        setTimeout(function() {
+            lastFooter.appendChild(loaderIcon);
+        }, 300);
         
         return false;
 }
@@ -48,11 +59,10 @@ HEDE.imageLoader = {
     setBackground: function (i) {
         var container = document.getElementById("container");
         container.style.backgroundImage = "url(" + HEDE.imageURLs[i].URL +")";
-        console.log(HEDE.imageURLs[i].URL);
-        console.log("setBackground körs");
-        //console.log(i);
     }
 };
+
+
 
 
 

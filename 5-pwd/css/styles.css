@@ -100,3 +100,8 @@ h1 {
 html {
     overflow-x: hidden
 }
+
+.loaderIcon {
+    width: 20px;
+    
+}
