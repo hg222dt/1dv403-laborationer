@@ -83,11 +83,3 @@ HEDE.Window.prototype.open = function () {
         desktopContainer.removeChild(WindowContainer);
     };
 };
-
-
-
-/*
-        nodeList = document.getElementsByClassName("nwcontent"),
-        contentDiv = nodeList[nodeList.length-1],
-        
-        */

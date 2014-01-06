@@ -3,6 +3,9 @@
 var HEDE = HEDE || {};
 
 HEDE.clickCounter = 0;
+//ett objekt som ska veta var alla öppnade fönster ligger, samt var föster stängts. dvs var det sista fönstret ligger.
+//Ska även ge funktionalitet för att veta vilka fönster som är de sista som få plats innan kanten på fönstret.
+    
 
 //Initierande funktionen
 HEDE.init = function () {
@@ -19,3 +22,6 @@ HEDE.init = function () {
 };
 
 window.onload = HEDE.init;
+//ett objekt som ska veta var alla öppnade fönster ligger, samt var föster stängts. dvs var det sista fönstret ligger.
+//Ska även ge funktionalitet för att veta vilka fönster som är de sista som få plats innan kanten på fönstret.
+    
