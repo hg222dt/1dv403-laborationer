@@ -8,6 +8,10 @@ var HEDE = HEDE || {};
 HEDE.windowStats = {
     clickCounter: 0,
     
+    windowArray: [],
+    
+    windowAmount: 0,
+    
     windowNodes: function () {
         var nodeList = document.getElementsByClassName("windowContainer");
         
@@ -16,7 +20,7 @@ HEDE.windowStats = {
         return nodeList;
     },
     
-    clickCounter2: 0
+    clickCounter2: 0,
 };
 
 //Initierande funktionen
@@ -26,9 +30,9 @@ HEDE.init = function () {
     galleryButton.onclick = function (e) {
         e.preventDefault();
         var galleryWindow = new HEDE.GalleryWindow();
-        galleryWindow.open();
         HEDE.windowStats.clickCounter++;
-        console.log(HEDE.clickCounter);
+        HEDE.windowStats.windowAmount++;
+        galleryWindow.open();
         HEDE.getImages();
     };
 };

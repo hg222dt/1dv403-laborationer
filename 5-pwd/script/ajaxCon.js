@@ -1,6 +1,9 @@
 "use strict";
 
 function AjaxCon(url, callback){
+    var d1 = new Date();
+    var t1 = d1.getTime();
+
     var xhr = this.getXHR();
     
     xhr.onreadystatechange = function () {
