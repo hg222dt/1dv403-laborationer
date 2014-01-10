@@ -28,7 +28,7 @@ HEDE.Window.prototype.open = function () {
     WindowContainer.style.top = 30 + (40 * HEDE.windowStats.clickCounter) + "px";
     WindowContainer.style.left = 400 + (50 * HEDE.windowStats.clickCounter) + "px";
     
-    WindowContainer.style.zIndex = HEDE.windowStats.clickCounter2;
+    WindowContainer.style.zIndex = HEDE.windowStats.clickCounter2+1;
     
     //header-div
     var header = document.createElement("div");

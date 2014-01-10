@@ -74,8 +74,13 @@ HEDE.getImages = function () {
                 bgDiv.appendChild(img);
             
                 img.onclick = function () {
-                    HEDE.imageLoader.setBackground(i);
-                };
+                    //HEDE.imageLoader.setBackground(i);
+                    var imageWindow = new HEDE.ImageWindow(i);
+                    imageWindow.open();
+                    HEDE.setImage(i);
+                    HEDE.windowStats.clickCounter++;
+                    console.log(HEDE.windowStats.clickCounter);
+                }
             })(i);
         };
         
@@ -89,12 +94,11 @@ HEDE.getImages = function () {
         }, 300);
         
         return false;
-};
+}
 
 HEDE.imageLoader = {
     setBackground: function (i) {
         var container = document.getElementById("container");
         container.style.backgroundImage = "url(" + HEDE.imageURLs[i].URL +")";
-        container.style.backgroundSize = HEDE.imageURLs[i].width + "px " + HEDE.imageURLs[i].height + "px";
     }
 };
