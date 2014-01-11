@@ -6,7 +6,7 @@ var HEDE = HEDE || {};
 HEDE.ImageURLs = "";
 
 HEDE.GalleryWindow = function () {
-    HEDE.Window.call(this, "Galleri", "pics/imagesIcon.png", 300, 400);
+    HEDE.Window.call(this, "Galleri", "pics/imagesIcon.png", HEDE.windowStats.standardHeight , HEDE.windowStats.standardWidth );
 };
 
 HEDE.GalleryWindow.prototype = Object.create(HEDE.Window.prototype);
@@ -76,9 +76,9 @@ HEDE.getImages = function () {
                 img.onclick = function () {
                     //HEDE.imageLoader.setBackground(i);
                     var imageWindow = new HEDE.ImageWindow(i);
+                    HEDE.windowStats.clickCounter++;
                     imageWindow.open();
                     HEDE.setImage(i);
-                    HEDE.windowStats.clickCounter++;
                     console.log(HEDE.windowStats.clickCounter);
                 }
             })(i);

@@ -118,17 +118,33 @@ h1 {
     left: 90px;
     top: 160px;
     color:gray;
+    
+    -webkit-animation: fadein 1s; /* Safari and Chrome */
+    -moz-animation: fadein 1s; /* Firefox */
+    -ms-animation: fadein 1s; /* Internet Explorer */
+    -o-animation: fadein 1s; /* Opera */
+    animation: fadein 1s;
 }
 
 #transTitleDiv {
     width: 300px;
-    height: 200px;
+    
     background: rgb(255, 255, 255); /* Fall-back for browsers that don't support rgba */
     background: rgba(255, 255, 255, .5);
     position: absolute;
     top: 30px;
     left: 72px;
     border-bottom: 2px solid white;
+    
+    -webkit-animation: curtain 1s; /* Safari and Chrome */
+    
+    -moz-animation: cutain 1s; /* Firefox */
+    -ms-animation: curtain 1s infinite; /* Internet Explorer */
+    -o-animation: cutain 1s; /* Opera */
+    
+    animation: curtain 1s;
+    height: 200px;
+    
 }
 
 html {
@@ -268,4 +284,32 @@ a:visited {
 @-ms-keyframes fadeinIcon {
     from { opacity: 0; }
     to   { opacity: 0.7; }
+}
+
+
+
+
+
+
+@keyframes curtain {
+    from { height: 0; }
+    to   { height: 200px; }
+}
+
+/* Firefox */
+@-moz-keyframes curtain {
+    from { height: 0; }
+    to   { height: 200px; }
+}
+
+/* Safari and Chrome */
+@-webkit-keyframes curtain {
+    from { height: 0; }
+    to   { height: 200px; }
+}
+
+/* Internet Explorer */
+@-ms-keyframes curtain {
+    from { height: 0; }
+    to   { height: 200px; }
 }

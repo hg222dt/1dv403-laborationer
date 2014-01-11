@@ -24,11 +24,11 @@ HEDE.windowStats = {
     
     standardWidth: 400,
     
-    standardHeight: 300,
+    standardHeight: 400,
     
     offsetX: 50,
     
-    offsetY: -40,
+    offsetY: 0,
     
     firstWindowPosX: 500,
     
@@ -40,23 +40,65 @@ HEDE.windowStats = {
     
     openReverse: false,
     
+    count: 0
+    
 };
 
 HEDE.windowPlacement = function () {
+    var windowXYR = [];
     
-        var windowXYR = [];
-        
-        var xPos = HEDE.windowStats.firstWindowPosX + ((HEDE.windowStats.clickCounter-1) * 50 - (HEDE.windowStats.offsetX * (HEDE.windowStats.row - 1)));
-        var yPos = HEDE.windowStats.firstWindowPosY + ((HEDE.windowStats.clickCounter-1) * 30 - (HEDE.windowStats.offsetY * (HEDE.windowStats.row - 1)));
-        
-        console.log("Vänsterkant av fönstret: " + xPos);
-        
+    console.log("count: " + HEDE.windowStats.count);
+    
+    var xPos = HEDE.windowStats.firstWindowPosX + ((HEDE.windowStats.clickCounter-1) * 50 - (HEDE.windowStats.offsetX * (HEDE.windowStats.row - 1)));
+    var yPos = HEDE.windowStats.firstWindowPosY + ((HEDE.windowStats.clickCounter-1) * 30 - (HEDE.windowStats.offsetY * (HEDE.windowStats.row - 1)));
+    
+    console.log("yPos innan if : " + yPos);
+    console.log("ypos +  höjd innan if: " + (yPos + HEDE.windowStats.standardHeight));
+    
     if(HEDE.windowStats.openReverse === false){
-        
+        HEDE.windowStats.count++;
         if((xPos + HEDE.windowStats.standardWidth > 1024) || (yPos + HEDE.windowStats.standardHeight > 570)){
             HEDE.windowStats.row++;
             HEDE.windowStats.clickCounter = 1;
+            console.log("REAKTION");
         }
+        
+        xPos = HEDE.windowStats.firstWindowPosX + ((HEDE.windowStats.clickCounter-1) * 50);
+        yPos = HEDE.windowStats.firstWindowPosY + ((HEDE.windowStats.clickCounter-1) * 30);
+        
+        xPos = xPos - HEDE.windowStats.offsetX * (HEDE.windowStats.row - 1);
+        yPos = yPos - HEDE.windowStats.offsetY * (HEDE.windowStats.row - 1);
+        
+        console.log("yPos: " + yPos);
+        console.log("xPos: " + xPos);
+        
+        console.log(yPos + HEDE.windowStats.standardHeight);
+        
+        console.log("yPos: " + yPos);
+        windowXYR[0] = xPos;
+        windowXYR[1] = yPos;
+        
+        HEDE.windowStats.windowsPlace.push(windowXYR);
+    
+        if(xPos < 0 || yPos + HEDE.windowStats.standardHeight > 570){
+            console.log("Nu ska det inte gå att trycka mer.");
+            HEDE.windowStats.openReverse = true;
+            HEDE.windowStats.count = 1;
+        }
+    }
+    
+    if(HEDE.windowStats.openReverse === true){
+            
+        if(HEDE.windowStats.count===1 && ((yPos + HEDE.windowStats.standardHeight > 570) || (xPos + HEDE.windowStats.standardWidth > 1024))){
+            HEDE.windowStats.row = HEDE.windowStats.row - 2;
+            HEDE.windowStats.clickCounter = 1;
+        }
+        else if((xPos < 0) || (yPos + HEDE.windowStats.standardHeight > 570) || (xPos + HEDE.windowStats.standardWidth > 1024)){
+            HEDE.windowStats.row--;
+            HEDE.windowStats.clickCounter = 1;
+            console.log("Ny rad. Row: " + HEDE.windowStats.row);
+        }
+        HEDE.windowStats.count++;
     
         xPos = HEDE.windowStats.firstWindowPosX + ((HEDE.windowStats.clickCounter-1) * 50);
         yPos = HEDE.windowStats.firstWindowPosY + ((HEDE.windowStats.clickCounter-1) * 30);
@@ -69,46 +111,10 @@ HEDE.windowPlacement = function () {
         
         HEDE.windowStats.windowsPlace.push(windowXYR);
     
-        if(xPos < 0 || yPos + HEDE.windowStats.standardHeight > 570){
-            console.log("Nu ska det inte gå att trycka mer.");
-            //Avrbyt öppningen av fönstret
-            //throw "Stäng senaste fönstret";
-            HEDE.windowStats.openReverse = true;
-        }
-    }
-    
-    if(HEDE.windowStats.openReverse === true){
-        var count = 0;
-        
-        while(HEDE.windowStats.openReverse === true){
-            count++;
-            
-            if(count === 1){
-                HEDE.windowStats.row = HEDE.windowStats.row - 2;
-                HEDE.windowStats.clickCounter = 1;
-            }
-            
-            else if((xPos < 0) || (yPos + HEDE.windowStats.standardHeight > 570) || (xPos + HEDE.windowStats.standardWidth > 1024)){
-                HEDE.windowStats.row--;
-                HEDE.windowStats.clickCounter = 1;
-                console.log("Ny rad. Row: " + HEDE.windowStats.row);
-            }
-        
-            xPos = HEDE.windowStats.firstWindowPosX + ((HEDE.windowStats.clickCounter-1) * 50);
-            yPos = HEDE.windowStats.firstWindowPosY + ((HEDE.windowStats.clickCounter-1) * 30);
-            
-            xPos = xPos - HEDE.windowStats.offsetX * (HEDE.windowStats.row - 1);
-            yPos = yPos - HEDE.windowStats.offsetY * (HEDE.windowStats.row - 1);
-        
-            windowXYR[0] = xPos;
-            windowXYR[1] = yPos;
-            
-            HEDE.windowStats.windowsPlace.push(windowXYR);
-        
-            if((xPos + HEDE.windowStats.standardWidth > 1024) || (yPos < 0)){
-                console.log("Nu ska det inte gå att trycka mer.");
-                HEDE.windowStats.openReverse = false;
-            }
+        if(HEDE.windowStats.row === 0/*(xPos + HEDE.windowStats.standardWidth > 1024) || (yPos < 0)*/){
+            console.log("Uppe i taket. Nu ska det inte gå att trycka mer.");
+            HEDE.windowStats.openReverse = false;
+            HEDE.windowStats.count = 0;
         }
     }
     
@@ -131,3 +137,5 @@ HEDE.init = function () {
 };
 
 window.onload = HEDE.init;
+
+

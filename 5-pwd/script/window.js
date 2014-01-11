@@ -25,8 +25,14 @@ HEDE.Window.prototype.open = function () {
     WindowContainer.className = "windowContainer";
     
     WindowContainer.style.position = "absolute";
-    WindowContainer.style.top = 30 + (40 * HEDE.windowStats.clickCounter) + "px";
-    WindowContainer.style.left = 400 + (50 * HEDE.windowStats.clickCounter) + "px";
+    
+    var windowsPosArr = HEDE.windowPlacement();
+    var lastWindowPos = windowsPosArr[windowsPosArr.length-1];
+    
+    WindowContainer.style.top = lastWindowPos[1] + "px";
+    WindowContainer.style.left = lastWindowPos[0] + "px";
+    
+    console.log("lasWinPosY: " + lastWindowPos[1]);
     
     WindowContainer.style.zIndex = HEDE.windowStats.clickCounter2+1;
     
