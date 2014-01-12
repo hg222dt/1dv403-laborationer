@@ -47,20 +47,14 @@ HEDE.windowStats = {
 HEDE.windowPlacement = function () {
     var windowXYR = [];
     
-    console.log("count: " + HEDE.windowStats.count);
-    
     var xPos = HEDE.windowStats.firstWindowPosX + ((HEDE.windowStats.clickCounter-1) * 50 - (HEDE.windowStats.offsetX * (HEDE.windowStats.row - 1)));
     var yPos = HEDE.windowStats.firstWindowPosY + ((HEDE.windowStats.clickCounter-1) * 30 - (HEDE.windowStats.offsetY * (HEDE.windowStats.row - 1)));
-    
-    console.log("yPos innan if : " + yPos);
-    console.log("ypos +  höjd innan if: " + (yPos + HEDE.windowStats.standardHeight));
     
     if(HEDE.windowStats.openReverse === false){
         HEDE.windowStats.count++;
         if((xPos + HEDE.windowStats.standardWidth > 1024) || (yPos + HEDE.windowStats.standardHeight > 570)){
             HEDE.windowStats.row++;
             HEDE.windowStats.clickCounter = 1;
-            console.log("REAKTION");
         }
         
         xPos = HEDE.windowStats.firstWindowPosX + ((HEDE.windowStats.clickCounter-1) * 50);
@@ -69,19 +63,12 @@ HEDE.windowPlacement = function () {
         xPos = xPos - HEDE.windowStats.offsetX * (HEDE.windowStats.row - 1);
         yPos = yPos - HEDE.windowStats.offsetY * (HEDE.windowStats.row - 1);
         
-        console.log("yPos: " + yPos);
-        console.log("xPos: " + xPos);
-        
-        console.log(yPos + HEDE.windowStats.standardHeight);
-        
-        console.log("yPos: " + yPos);
         windowXYR[0] = xPos;
         windowXYR[1] = yPos;
         
         HEDE.windowStats.windowsPlace.push(windowXYR);
     
         if(xPos < 0 || yPos + HEDE.windowStats.standardHeight > 570){
-            console.log("Nu ska det inte gå att trycka mer.");
             HEDE.windowStats.openReverse = true;
             HEDE.windowStats.count = 1;
         }
@@ -112,7 +99,6 @@ HEDE.windowPlacement = function () {
         HEDE.windowStats.windowsPlace.push(windowXYR);
     
         if(HEDE.windowStats.row === 0/*(xPos + HEDE.windowStats.standardWidth > 1024) || (yPos < 0)*/){
-            console.log("Uppe i taket. Nu ska det inte gå att trycka mer.");
             HEDE.windowStats.openReverse = false;
             HEDE.windowStats.count = 0;
         }
@@ -123,15 +109,86 @@ HEDE.windowPlacement = function () {
 
 //Initierande funktionen
 HEDE.init = function () {
-    var galleryButton = document.getElementById("galleryButton");
     
-    galleryButton.onclick = function (e) {
+    //var galleryButton = document.getElementById("galleryButton");
+    var container = document.getElementById("container");
+    
+    var transDiv = document.createElement("div");
+    transDiv.setAttribute("id", "transTitleDiv");
+    
+    var mainTitle = document.createElement("h1");
+    var titleText = document.createTextNode("Henkes Streetview");
+    mainTitle.appendChild(titleText);
+    
+    var menuBar = document.createElement("div");
+    menuBar.setAttribute("id", "menuBar");
+    
+    //Galleri-länk
+    var link1 = document.createElement("a");
+    link1.setAttribute("href","#");
+    link1.setAttribute("id", "galleryButton");
+    var imgLink1 = document.createElement("img");
+    imgLink1.setAttribute("src","pics/imagesIcon.png");
+    
+    var span1 = document.createElement("span");
+    var span1Text = document.createTextNode("Galleri");
+    
+    link1.appendChild(imgLink1);
+    link1.appendChild(span1);
+    span1.appendChild(span1Text);
+    
+    //RSS-länk
+    var link2 = document.createElement("a");
+    link2.setAttribute("href","#");
+    link2.setAttribute("id", "rssButton");
+    var imgLink2 = document.createElement("img");
+    imgLink2.setAttribute("src","pics/imagesIcon.png");
+    
+    var span2 = document.createElement("span");
+    var span2Text = document.createTextNode("RSS - dn.se");
+    
+    link2.appendChild(imgLink2);
+    link2.appendChild(span2);
+    span2.appendChild(span2Text);
+    
+    
+    setTimeout(function() {
+        container.appendChild(transDiv);
+    }, 2000);
+    
+    setTimeout(function() {
+        container.appendChild(mainTitle);
+    }, 3000);
+    
+    setTimeout(function() {
+        container.appendChild(menuBar);
+    }, 4000);
+    
+    setTimeout(function() {
+        menuBar.appendChild(link1);
+    }, 4200);
+    
+    setTimeout(function() {
+        menuBar.appendChild(link2);
+    }, 4400);
+    
+    
+    link1.onclick = function (e) {
         e.preventDefault();
         var galleryWindow = new HEDE.GalleryWindow();
         HEDE.windowStats.clickCounter++;
         HEDE.windowStats.windowAmount++;
         galleryWindow.open();
         HEDE.getImages();
+    };
+    
+    link2.onclick = function (e) {
+        e.preventDefault();
+        var rssWindow = new HEDE.rssWindow();
+        HEDE.windowStats.clickCounter++;
+        HEDE.windowStats.windowAmount++;
+        rssWindow.open();
+        HEDE.getRSSFeed();
     };
 
 };

@@ -32,8 +32,6 @@ HEDE.Window.prototype.open = function () {
     WindowContainer.style.top = lastWindowPos[1] + "px";
     WindowContainer.style.left = lastWindowPos[0] + "px";
     
-    console.log("lasWinPosY: " + lastWindowPos[1]);
-    
     WindowContainer.style.zIndex = HEDE.windowStats.clickCounter2+1;
     
     //header-div
