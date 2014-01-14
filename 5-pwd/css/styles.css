@@ -224,6 +224,20 @@ html {
     transition: all 0.5s;
 }
 
+#memoryButton {
+    -webkit-animation: pushUpA 0.5s; /* Safari and Chrome */
+    -moz-animation: pushUpA 0.5s; /* Firefox */
+    -ms-animation: pushUpA 0.5s; /* Internet Explorer */
+    -o-animation: pushUpA 0.5s; /* Opera */
+    animation: pushUpA 0.5s;
+}
+
+#memoryButton img {
+    width: 70px;
+    display: block;
+    transition: all 0.5s;
+}
+
 #menuBar img:hover {
     transform: rotate(10deg) scale(1.15,1.15);
     -ms-transform:rotate(10deg) scale(1.15,1.15); /* IE 9 */
@@ -247,6 +261,13 @@ html {
     z-index: 1;
 }
 
+#memoryButton {
+    position: absolute;
+    left: 280px;
+    bottom: 20px;
+    z-index: 1;
+}
+
 
 
 #galleryButton span {
@@ -255,6 +276,10 @@ html {
 
 #rssButton span {
     margin-left: -10px;
+}
+
+#memoryButton span {
+    margin-left: 0;
 }
 
 a:link {
@@ -335,6 +360,49 @@ a:visited {
     display: none;
     visibility: hidden;
 }
+
+
+
+.memoryBoard {
+    position:relative;
+    margin-left: auto;
+    margin-right: auto;
+    width: 200px;
+}
+
+#windowContent {
+    position:relative;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.memoryBoard a {
+    
+    
+}
+
+.memoryBoard img {
+    width: 30px;
+    margin-top: 20px;
+    margin-right: 20px;
+}
+
+.memoryBoard h1 {
+    text-align: center;
+}
+
+.memoryBoard p {
+    font-size: 1em;
+    font-family: 'Montserrat', sans-serif;
+}
+
+.memoryBoard h1 {
+    font-size: 4em;
+    font-family: 'Montserrat', sans-serif;
+}
+
+
+
 
 
 

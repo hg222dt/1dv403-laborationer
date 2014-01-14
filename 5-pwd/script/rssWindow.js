@@ -1,13 +1,11 @@
 "use strict";
 var HEDE = HEDE || {};
 
-HEDE.ImageURLs = "";
-
-HEDE.rssWindow = function () {
+HEDE.RssWindow = function () {
     HEDE.Window.call(this, "RSS-flöde", "pics/imagesIcon.png", HEDE.windowStats.standardHeight , HEDE.windowStats.standardWidth );
 };
 
-HEDE.rssWindow.prototype = Object.create(HEDE.Window.prototype);
+HEDE.RssWindow.prototype = Object.create(HEDE.Window.prototype);
 
 HEDE.getRSSFeed = function () {
     //ajaxanrop
@@ -34,9 +32,6 @@ HEDE.getRSSFeed = function () {
             containerDiv.innerHTML = responseText;
             
             lastNode.appendChild(containerDiv);
-            
-            
-            
             
             if(isLoaderIconThere){
                 lastFooter.removeChild(loaderIcon);

@@ -72,15 +72,18 @@ HEDE.getImages = function () {
                 lastNode.appendChild(containerDiv);
                 containerDiv.appendChild(bgDiv);
                 bgDiv.appendChild(img);
-            
+                
                 img.onclick = function () {
                     //HEDE.imageLoader.setBackground(i);
+                    
                     var imageWindow = new HEDE.ImageWindow(i);
                     HEDE.windowStats.clickCounter++;
                     imageWindow.open();
                     HEDE.setImage(i);
                     console.log(HEDE.windowStats.clickCounter);
-                }
+                    
+                    HEDE.setBackground(i);
+                };
             })(i);
         };
         
@@ -94,11 +97,12 @@ HEDE.getImages = function () {
         }, 300);
         
         return false;
-}
+};
 
-HEDE.imageLoader = {
-    setBackground: function (i) {
-        var container = document.getElementById("container");
-        container.style.backgroundImage = "url(" + HEDE.imageURLs[i].URL +")";
-    }
+HEDE.setBackground = function (imgNumber) {
+    var container = document.getElementById("container");
+    container.style.backgroundImage = "url('" + HEDE.imageURLs[imgNumber].URL + "')";
+    container.style.backgroundSize = HEDE.imageURLs[imgNumber].width + "px " + HEDE.imageURLs[imgNumber].height + "px";
+    
+    console.log(HEDE.imageURLs[imgNumber].URL);
 };

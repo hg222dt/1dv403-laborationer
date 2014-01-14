@@ -35,9 +35,6 @@ HEDE.setImage = function (imgNumber) {
         windowNode.appendChild(span);
     }   
     
-    
-    
-    
     windowNode.appendChild(img2);
     
     windowNode.style.overflow = "hidden";

@@ -10,6 +10,8 @@ HEDE.windowStats = {
     
     windowArray: [],
     
+    windowNumbers: [],
+    
     windowAmount: 0,
     
     windowNodes: function () {
@@ -42,69 +44,6 @@ HEDE.windowStats = {
     
     count: 0
     
-};
-
-HEDE.windowPlacement = function () {
-    var windowXYR = [];
-    
-    var xPos = HEDE.windowStats.firstWindowPosX + ((HEDE.windowStats.clickCounter-1) * 50 - (HEDE.windowStats.offsetX * (HEDE.windowStats.row - 1)));
-    var yPos = HEDE.windowStats.firstWindowPosY + ((HEDE.windowStats.clickCounter-1) * 30 - (HEDE.windowStats.offsetY * (HEDE.windowStats.row - 1)));
-    
-    if(HEDE.windowStats.openReverse === false){
-        HEDE.windowStats.count++;
-        if((xPos + HEDE.windowStats.standardWidth > 1024) || (yPos + HEDE.windowStats.standardHeight > 570)){
-            HEDE.windowStats.row++;
-            HEDE.windowStats.clickCounter = 1;
-        }
-        
-        xPos = HEDE.windowStats.firstWindowPosX + ((HEDE.windowStats.clickCounter-1) * 50);
-        yPos = HEDE.windowStats.firstWindowPosY + ((HEDE.windowStats.clickCounter-1) * 30);
-        
-        xPos = xPos - HEDE.windowStats.offsetX * (HEDE.windowStats.row - 1);
-        yPos = yPos - HEDE.windowStats.offsetY * (HEDE.windowStats.row - 1);
-        
-        windowXYR[0] = xPos;
-        windowXYR[1] = yPos;
-        
-        HEDE.windowStats.windowsPlace.push(windowXYR);
-    
-        if(xPos < 0 || yPos + HEDE.windowStats.standardHeight > 570){
-            HEDE.windowStats.openReverse = true;
-            HEDE.windowStats.count = 1;
-        }
-    }
-    
-    if(HEDE.windowStats.openReverse === true){
-            
-        if(HEDE.windowStats.count===1 && ((yPos + HEDE.windowStats.standardHeight > 570) || (xPos + HEDE.windowStats.standardWidth > 1024))){
-            HEDE.windowStats.row = HEDE.windowStats.row - 2;
-            HEDE.windowStats.clickCounter = 1;
-        }
-        else if((xPos < 0) || (yPos + HEDE.windowStats.standardHeight > 570) || (xPos + HEDE.windowStats.standardWidth > 1024)){
-            HEDE.windowStats.row--;
-            HEDE.windowStats.clickCounter = 1;
-            console.log("Ny rad. Row: " + HEDE.windowStats.row);
-        }
-        HEDE.windowStats.count++;
-    
-        xPos = HEDE.windowStats.firstWindowPosX + ((HEDE.windowStats.clickCounter-1) * 50);
-        yPos = HEDE.windowStats.firstWindowPosY + ((HEDE.windowStats.clickCounter-1) * 30);
-        
-        xPos = xPos - HEDE.windowStats.offsetX * (HEDE.windowStats.row - 1);
-        yPos = yPos - HEDE.windowStats.offsetY * (HEDE.windowStats.row - 1);
-    
-        windowXYR[0] = xPos;
-        windowXYR[1] = yPos;
-        
-        HEDE.windowStats.windowsPlace.push(windowXYR);
-    
-        if(HEDE.windowStats.row === 0/*(xPos + HEDE.windowStats.standardWidth > 1024) || (yPos < 0)*/){
-            HEDE.windowStats.openReverse = false;
-            HEDE.windowStats.count = 0;
-        }
-    }
-    
-    return HEDE.windowStats.windowsPlace;
 };
 
 //Initierande funktionen
@@ -151,6 +90,21 @@ HEDE.init = function () {
     link2.appendChild(span2);
     span2.appendChild(span2Text);
     
+    //Memory-länk
+    var link3 = document.createElement("a");
+    link3.setAttribute("href","#");
+    link3.setAttribute("id", "memoryButton");
+    var imgLink3 = document.createElement("img");
+    imgLink3.setAttribute("src","pics/imagesIcon.png");
+    
+    var span3 = document.createElement("span");
+    var span3Text = document.createTextNode("Memory");
+    
+    link3.appendChild(imgLink3);
+    link3.appendChild(span3);
+    span3.appendChild(span3Text);
+    
+    
     
     setTimeout(function() {
         container.appendChild(transDiv);
@@ -172,6 +126,10 @@ HEDE.init = function () {
         menuBar.appendChild(link2);
     }, 4400);
     
+    setTimeout(function() {
+        menuBar.appendChild(link3);
+    }, 4600);
+    
     
     link1.onclick = function (e) {
         e.preventDefault();
@@ -184,11 +142,20 @@ HEDE.init = function () {
     
     link2.onclick = function (e) {
         e.preventDefault();
-        var rssWindow = new HEDE.rssWindow();
+        var rssWindow = new HEDE.RssWindow();
         HEDE.windowStats.clickCounter++;
         HEDE.windowStats.windowAmount++;
         rssWindow.open();
         HEDE.getRSSFeed();
+    };
+    
+    link3.onclick = function (e) {
+        e.preventDefault();
+        var memoryWindow = new HEDE.MemoryWindow();
+        HEDE.windowStats.clickCounter++;
+        HEDE.windowStats.windowAmount++;
+        memoryWindow.open();
+        memoryWindow.startGame();
     };
 
 };
